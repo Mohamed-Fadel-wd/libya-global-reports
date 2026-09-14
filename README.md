@@ -18,7 +18,7 @@ Operating plan (paper): [docs/5ds-commercial-package.md](docs/5ds-commercial-pac
 
 ## Local setup
 
-Requires Node.js 20+.
+Requires Node.js 22.12+.
 
 ```bash
 cd apps/libya-global-reports
