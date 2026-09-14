@@ -1,0 +1,19 @@
+{
+  "id": "obs-fx-official-usd-sample",
+  "indicatorType": "fx-official",
+  "value": 4.85,
+  "unit": "LYD_per_1_foreign",
+  "currencyPair": "USD/LYD",
+  "location": "Central Bank table (sample)",
+  "buySell": "mid",
+  "cashTransfer": "unspecified",
+  "observedAt": "2026-09-03T12:00:00+02:00",
+  "collectedAt": "2026-09-03T16:00:00+02:00",
+  "sourceId": "src-cbl",
+  "verificationStatus": "reported",
+  "demo": true,
+  "editorialStatus": "published",
+  "infraStatus": null,
+  "restorationUpdate": null,
+  "notes": "SAMPLE figure for layout only. Not a CBL rate."
+}

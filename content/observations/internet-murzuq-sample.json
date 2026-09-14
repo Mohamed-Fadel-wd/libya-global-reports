@@ -1,0 +1,19 @@
+{
+  "id": "obs-internet-murzuq-sample",
+  "indicatorType": "internet",
+  "value": null,
+  "unit": "status",
+  "currencyPair": null,
+  "location": "Murzuq",
+  "buySell": null,
+  "cashTransfer": null,
+  "observedAt": "2026-09-01T12:00:00+02:00",
+  "collectedAt": "2026-09-02T09:00:00+02:00",
+  "sourceId": "src-manual-editorial",
+  "verificationStatus": "reported",
+  "demo": true,
+  "editorialStatus": "published",
+  "infraStatus": "reported",
+  "restorationUpdate": "Not reported",
+  "notes": "Intermittent service, not a confirmed complete cut."
+}

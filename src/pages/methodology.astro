@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { loadBoard } from "../lib/content";
+import { formatDateTime } from "../lib/time";
+
+const { settings, contactHref } = loadBoard();
+---
+
+<BaseLayout title="Methodology" description="How Libya Global Reports verifies, labels and limits its coverage.">
+  <div class="wrap prose">
+    <h1 class="page-title">Methodology</h1>
+    <p class="lede">
+      This board is a human-edited briefing, not a live wire or a scoring engine. It answers four questions: what
+      changed, where it matters, what the operational implications are, and what to watch next.
+    </p>
+
+    <h2>Verification</h2>
+    <p>
+      Collected RSS items and any future API excerpts enter a draft queue only. They are not published until an editor
+      writes a structured article with sources, confidence and a verification status. Scraped or model-generated text
+      never goes live on its own.
+    </p>
+    <p>
+      Status labels: <strong>reported</strong> (single source or attributed claim), <strong>corroborated</strong> (independent
+      confirmation), <strong>disputed</strong> (conflict recorded), <strong>corrected</strong>, or <strong>unverified</strong>.
+      Missing data is shown as “No verified update” or “Not reported”. That is not a finding that conditions are normal.
+    </p>
+
+    <h2>Confidence</h2>
+    <p>
+      High, medium or low confidence is an editorial judgement with a short rationale on each article. It is not a
+      probability, risk score or certainty claim.
+    </p>
+
+    <h2>Severity and direction</h2>
+    <p>
+      Severity and direction-of-change are qualitative labels for scanning. They are not gauges, indexes or forecasts.
+    </p>
+
+    <h2>Corrections</h2>
+    <p>
+      If a published fact is wrong, the article stays up with a correction history rather than disappearing. Substantial
+      errors should be summarised in the correction line with a timestamp in Africa/Tripoli.
+    </p>
+
+    <h2>Currency comparisons</h2>
+    <p>
+      Official and parallel quotes are shown by location. A parallel-market premium is calculated only when the official
+      and parallel observations share a currency pair and unit and their observation times fall within {settings.fxAlignmentHours} hours:
+      ((parallel rate / official rate) − 1) × 100. This site does not invent a nationwide parallel rate. Observation time
+      is kept separate from collection time. Stale rows are labelled.
+    </p>
+
+    <h2>Infrastructure and oil</h2>
+    <p>
+      Electricity, water and internet rows are incident notes, not comprehensive outage monitoring. Brent is labelled
+      separately from Libyan crude grades. Commodity prices are omitted when no suitable feed exists.
+    </p>
+
+    <h2>Languages</h2>
+    <p>
+      The interface is English. Content records include a locale field so Arabic and RTL can be added later without
+      rebuilding the data model. Logical CSS properties are used so direction can switch.
+    </p>
+
+    <h2>Coverage limits</h2>
+    <p>
+      Many official and operator sites have no verified public feed. Those sources stay in the register as disabled.
+      The board will be thinner than a wire service and should be read that way. Last methodology review: {formatDateTime(settings.lastReviewedAt)}.
+    </p>
+
+    <h2>Contact</h2>
+    {contactHref ? (
+      <p><a href={contactHref}>Send feedback</a></p>
+    ) : (
+      <p>No contact address is configured yet. Set <code>LGR_CONTACT_HREF</code> or <code>contactHref</code> in settings. There is no unused form on this page.</p>
+    )}
+
+    <p><a href="/sources">Open the source register</a>.</p>
+  </div>
+</BaseLayout>

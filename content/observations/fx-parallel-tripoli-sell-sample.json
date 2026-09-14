@@ -1,0 +1,19 @@
+{
+  "id": "obs-fx-parallel-tripoli-sell-sample",
+  "indicatorType": "fx-parallel",
+  "value": 7.25,
+  "unit": "LYD_per_1_foreign",
+  "currencyPair": "USD/LYD",
+  "location": "Tripoli",
+  "buySell": "sell",
+  "cashTransfer": "cash",
+  "observedAt": "2026-09-03T13:30:00+02:00",
+  "collectedAt": "2026-09-03T16:05:00+02:00",
+  "sourceId": "src-manual-editorial",
+  "verificationStatus": "reported",
+  "demo": true,
+  "editorialStatus": "published",
+  "infraStatus": null,
+  "restorationUpdate": null,
+  "notes": "SAMPLE indicative cash offer in Tripoli. Not a nationwide rate."
+}

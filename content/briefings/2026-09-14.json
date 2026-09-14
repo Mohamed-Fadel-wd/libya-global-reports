@@ -1,0 +1,23 @@
+{
+  "id": "brief-2026-09-14",
+  "date": "2026-09-14",
+  "summary": "14 September 2026. First non-demo publishing day: seven ReliefWeb items from WHO, IOM, FAO, WFP and UNHCR were read on the source pages and written as attributed briefs. They describe southern health access, Ghat flood needs, eastern cereal stress, border-route shifts, May market prices, Sudanese arrival estimates, and a May protest near UNHCR in Tripoli. SAMPLE articles remain on the board. No official CBL or NOC table was attached, so currency and infrastructure rows are not updated from these notes.",
+  "essentialArticleIds": [
+    "art-rw-who-echo-south-2026",
+    "art-rw-iom-ghat-floods-2026",
+    "art-rw-iom-borders-q2-2026",
+    "art-rw-wfp-meb-2026-05",
+    "art-rw-unhcr-sudanese-2026-06"
+  ],
+  "watchNext": [
+    "Whether WHO publishes a start date or facility list for Alkufra/Alghatroun mobile teams.",
+    "Whether Ghat wells or Tahala displacement are updated by IOM or a municipal source.",
+    "Whether a later DTM quarter revises the Q2 23 percent incoming-movement figure.",
+    "Whether WFP's next MEB print continues the May decline.",
+    "Whether UNHCR revises the 566,043 / 93,831 Sudanese figures."
+  ],
+  "editorialStatus": "published",
+  "demo": false,
+  "publishedAt": "2026-09-14T13:30:00+02:00",
+  "locale": "en"
+}

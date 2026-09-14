@@ -1,0 +1,31 @@
+{
+  "id": "art-rw-iom-ghat-floods-2026",
+  "slug": "iom-rapid-needs-ghat-flash-floods",
+  "title": "IOM assessment: late-May flash floods in Ghat displaced residents and knocked out municipal wells",
+  "summary": "IOM DTM's Rapid Needs Assessment, posted on ReliefWeb on 22 June 2026, attributed late-May 2026 flash floods in Ghat municipality to heavy rain and listed shelter, food, water, WASH, health and NFI needs. Figures are IOM's, from five key-informant interviews on 2 June, not a government census.",
+  "whatHappened": "The International Organization for Migration said heavy rainfall in late May 2026 triggered flash floods across Ghat municipality in south-west Libya. IOM estimated 8,194 people affected in host communities and 7,100 migrants, with more than 2,000 people displaced; it said around 85 families (425 people) in Tahala remained displaced at the time of reporting. Based on five key-informant interviews in three muhallas on 2 June 2026, DTM listed shelter, food, water, WASH, health and non-food items as the most pressing needs, compounded by fuel shortages, power and telecommunications outages, and the loss of all five municipal water wells. IOM said the security situation remained broadly stable and warned of waterborne-disease risk if further rain arrived. This board did not inspect Ghat and did not obtain a municipal confirmation of the well losses.",
+  "whyItMatters": "Ghat sits on a southern corridor where water, fuel and telecom failures change movement and aid planning. Treating an assessment built on five interviews as a complete damage survey would hide uncertainty.",
+  "watchNext": "A municipal, utility or follow-up DTM note that confirms well restoration, remaining displacement in Tahala, or a revised affected-population figure.",
+  "region": "south",
+  "locations": ["Ghat", "Tahala"],
+  "categories": ["humanitarian", "infrastructure"],
+  "sectors": ["un-humanitarian", "logistics"],
+  "eventTime": "2026-05-31T12:00:00+02:00",
+  "sourcePublishedAt": "2026-06-22T13:33:08.000Z",
+  "publishedAt": "2026-09-14T13:12:00+02:00",
+  "updatedAt": "2026-09-14T13:12:00+02:00",
+  "sourceIds": ["src-reliefweb-libya"],
+  "sourceUrls": [
+    "https://reliefweb.int/report/libya/libya-rapid-needs-assessment-flash-floods-south-west-libya-may-2026"
+  ],
+  "verificationStatus": "reported",
+  "confidence": "medium",
+  "confidenceRationale": "IOM HTML summary on ReliefWeb was read. Sample is five key informants; no second official source on this board.",
+  "editorialStatus": "published",
+  "demo": false,
+  "severity": "high",
+  "direction": "deteriorating",
+  "disputedClaims": [],
+  "corrections": [],
+  "locale": "en"
+}

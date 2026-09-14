@@ -1,0 +1,31 @@
+{
+  "id": "art-rw-iom-borders-q2-2026",
+  "slug": "iom-migration-trends-libya-borders-q2-2026",
+  "title": "IOM: incoming border movements rose 23 percent in Q2 2026 while Niger-route flows fell",
+  "summary": "IOM DTM's Q2 2026 border-trends note, posted on ReliefWeb on 13 August 2026, said overall incoming movements rose 23 percent from April to June while Niger-border movements declined amid tighter controls. Sudanese arrivals were described as continuing via Chad and Egypt after direct Sudan crossings closed.",
+  "whatHappened": "The International Organization for Migration said that between April and June 2026 overall incoming migration movements across Libya's borders increased by 23 percent, which it described as a seasonal rise ahead of the summer peak. DTM field observations, IOM said, recorded a notable decline along Nigerien borders, attributed to intensified border controls, security operations, and frequent arrests and deportations. IOM said mobility was increasingly shaped by anti-smuggling measures and that field reports pointed to longer, more remote desert routes, raising cost and protection risk, including reports of deaths and disappearances. Cross-border movement of people, goods, vehicles and livestock continued, particularly on Algeria, Tunisia and Chad corridors. IOM said Sudanese nationals continued to arrive via Chad and Egypt after direct Libya–Sudan crossings closed, and that conflict-related displacement in Sudan suggested those arrivals were likely to persist. This board has not seen the underlying DTM microdata.",
+  "whyItMatters": "Corridor choice, arrest risk and indirect Sudanese routing change what logistics and protection desks should staff. A quarterly DTM narrative is not a live border-status feed.",
+  "watchNext": "A subsequent DTM quarter that revises the 23 percent figure, or an official notice on the Niger, Chad or Egypt crossings named in the note.",
+  "region": "national",
+  "locations": ["Niger border", "Chad", "Egypt", "Tunisia", "Algeria"],
+  "categories": ["humanitarian", "security"],
+  "sectors": ["un-humanitarian", "logistics"],
+  "eventTime": "2026-06-30T12:00:00+02:00",
+  "sourcePublishedAt": "2026-08-13T13:33:40.000Z",
+  "publishedAt": "2026-09-14T13:16:00+02:00",
+  "updatedAt": "2026-09-14T13:16:00+02:00",
+  "sourceIds": ["src-reliefweb-libya"],
+  "sourceUrls": [
+    "https://reliefweb.int/report/libya/libya-migration-trends-libyas-borders-q2-2026"
+  ],
+  "verificationStatus": "reported",
+  "confidence": "medium",
+  "confidenceRationale": "IOM Q2 analysis HTML on ReliefWeb was read. Percentages are DTM's; desert-route deaths are field reports, not a named list.",
+  "editorialStatus": "published",
+  "demo": false,
+  "severity": "moderate",
+  "direction": "mixed",
+  "disputedClaims": [],
+  "corrections": [],
+  "locale": "en"
+}

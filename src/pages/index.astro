@@ -1,0 +1,420 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+import EmptyState from "../components/EmptyState.astro";
+import { loadBoard } from "../lib/content";
+import { formatDate, formatDateTime, isStale } from "../lib/time";
+import { locationSpecificPremiums, formatPremium } from "../lib/currency";
+import {
+  CATEGORY_LABELS,
+  FILTERABLE_CATEGORIES,
+  FILTERABLE_REGIONS,
+  FILTERABLE_SECTORS,
+  INFRA_STATUS_LABELS,
+  REGION_LABELS,
+  SECTOR_LABELS,
+  VERIFICATION_LABELS,
+} from "../lib/labels";
+import { displayValue } from "../lib/display";
+import type { Article } from "../lib/schemas";
+
+const board = loadBoard();
+const briefing = board.briefings[0];
+const outlook = board.outlooks[0];
+const essential = (briefing?.essentialArticleIds || [])
+  .map((id) => board.articles.find((article) => article.id === id))
+  .filter((article): article is Article => Boolean(article));
+
+const regional = Object.fromEntries(
+  FILTERABLE_REGIONS.map((region) => [region, board.articles.filter((article) => article.region === region)]),
+) as Record<(typeof FILTERABLE_REGIONS)[number], Article[]>;
+
+const fx = board.observations.filter((item) => item.indicatorType === "fx-official" || item.indicatorType === "fx-parallel");
+const premiums = locationSpecificPremiums(fx, board.settings.fxAlignmentHours);
+const infraTypes = ["electricity", "water", "internet"] as const;
+const infra = board.observations.filter((item) => infraTypes.includes(item.indicatorType as (typeof infraTypes)[number]));
+const oilPolitics = board.articles.filter((article) =>
+  article.categories.some((category) => ["oil", "politics", "diplomacy"].includes(category)),
+);
+const commodities = board.observations.filter(
+  (item) => (item.indicatorType === "brent" || item.indicatorType === "libyan-crude") && item.value !== null,
+);
+const production = board.observations.filter((item) => item.indicatorType === "oil-production" || item.indicatorType === "oil-terminal");
+
+function infraFor(kind: (typeof infraTypes)[number], regionHint: readonly string[]) {
+  return infra.filter(
+    (item) => item.indicatorType === kind && regionHint.some((hint) => item.location.toLowerCase().includes(hint)),
+  );
+}
+
+const infraMatrix = (
+  [
+    { kind: "electricity", region: "west", hints: ["tripoli"] },
+    { kind: "electricity", region: "east", hints: ["benghazi", "tobruk", "ras lanuf"] },
+    { kind: "electricity", region: "south", hints: ["sebha", "murzuq", "kufra"] },
+    { kind: "water", region: "west", hints: ["tripoli", "misrata", "zawiyah"] },
+    { kind: "water", region: "east", hints: ["benghazi"] },
+    { kind: "water", region: "south", hints: ["sebha", "murzuq", "kufra"] },
+    { kind: "internet", region: "west", hints: ["tripoli", "misrata"] },
+    { kind: "internet", region: "east", hints: ["benghazi"] },
+    { kind: "internet", region: "south", hints: ["sebha", "murzuq", "kufra"] },
+  ] as const
+).map((row) => ({ ...row, rows: infraFor(row.kind, row.hints) }));
+
+function sourceName(id: string) {
+  return board.sources.find((source) => source.id === id)?.name ?? id;
+}
+---
+
+<BaseLayout>
+  <div class="wrap">
+    <section class="section" aria-labelledby="briefing-heading">
+      <div class="section-head">
+        <h1 class="page-title" id="briefing-heading">Executive briefing</h1>
+        {briefing?.demo && <span class="demo-chip">SAMPLE briefing</span>}
+      </div>
+      {briefing ? (
+        <>
+          <p class="lede"><strong>{formatDate(briefing.date)}</strong>. {briefing.summary}</p>
+          <h2>Essential developments</h2>
+          <div class="grid grid-2" id="essential-list">
+            {essential.map((article) => <ArticleCard article={article} filterable={false} />)}
+          </div>
+          <div class="card" style="margin-top:1rem">
+            <h2>What to watch next</h2>
+            <ul>
+              {briefing.watchNext.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        </>
+      ) : (
+        <EmptyState body="No approved briefing has been published yet. Missing content is not a statement that conditions are normal." />
+      )}
+    </section>
+
+    <section class="section" aria-labelledby="filters-heading">
+      <h2 id="filters-heading">Find developments</h2>
+      <p class="section-note">Filters and search run in your browser. Without JavaScript, every published card remains visible.</p>
+      <form class="filters" id="board-filters" role="search">
+        <div class="filters-row">
+          <label class="field">
+            Search headlines, summaries and locations
+            <input type="search" name="q" placeholder="Tripoli, Mellitah, fibre…" autocomplete="off" />
+          </label>
+          <label class="field">
+            Region
+            <select name="region">
+              <option value="all">All regions</option>
+              {FILTERABLE_REGIONS.map((region) => <option value={region}>{REGION_LABELS[region]}</option>)}
+              <option value="national">National</option>
+            </select>
+          </label>
+          <label class="field">
+            Sector
+            <select name="sector">
+              <option value="all">All sectors</option>
+              {FILTERABLE_SECTORS.map((sector) => <option value={sector}>{SECTOR_LABELS[sector]}</option>)}
+            </select>
+          </label>
+          <label class="field">
+            Category
+            <select name="category">
+              <option value="all">All categories</option>
+              {FILTERABLE_CATEGORIES.map((category) => (
+                <option value={category}>{CATEGORY_LABELS[category]}</option>
+              ))}
+            </select>
+          </label>
+        </div>
+      </form>
+    </section>
+
+    <section class="section" aria-labelledby="regional-heading">
+      <div class="section-head">
+        <h2 id="regional-heading">Regional watch</h2>
+      </div>
+      <p class="section-note">
+        Region cards only. Absence of a card means no verified update for that slice, not that conditions are normal.
+      </p>
+      <div class="tabs" role="tablist" aria-label="Regions">
+        {FILTERABLE_REGIONS.map((region, index) => (
+          <button
+            type="button"
+            role="tab"
+            id={`tab-${region}`}
+            aria-controls="regional-panels"
+            aria-selected={index === 0 ? "true" : "false"}
+            tabindex={index === 0 ? 0 : -1}
+            data-region-tab={region}
+          >
+            {REGION_LABELS[region]}
+          </button>
+        ))}
+      </div>
+      <div id="regional-panels" style="margin-top:0.85rem">
+        {FILTERABLE_REGIONS.map((region, index) => (
+          <div
+            role="tabpanel"
+            id={`panel-${region}`}
+            aria-labelledby={`tab-${region}`}
+            data-region-panel={region}
+            hidden={index !== 0}
+          >
+            <div class="grid grid-2" data-region-grid={region}>
+              {regional[region].map((article) => <ArticleCard article={article} />)}
+            </div>
+            <div class="js-region-empty" data-empty-for={region} hidden={regional[region].length > 0 ? true : undefined}>
+              <EmptyState
+                body={`No verified update for ${REGION_LABELS[region]} in the current filter. This is not a normal-conditions report.`}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="fx-heading">
+      <div class="section-head">
+        <h2 id="fx-heading">Currency board</h2>
+        <span class="demo-chip">SAMPLE quotes</span>
+      </div>
+      <p class="section-note">
+        Quotes are location-specific. There is no nationwide parallel-market rate on this board. Premium =
+        ((parallel rate / official rate) − 1) × 100, only when units and currency pairs match and observation times are
+        within {board.settings.fxAlignmentHours} hours.
+      </p>
+      {fx.length ? (
+        <div class="table-wrap card">
+          <table>
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Pair</th>
+                <th>LYD per 1 unit</th>
+                <th>Buy/sell</th>
+                <th>Cash/transfer</th>
+                <th>Location</th>
+                <th>Observed</th>
+                <th>Source</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              {fx.map((row) => (
+                <tr>
+                  <td>
+                    {row.demo && <span class="label label-demo">SAMPLE</span>}{" "}
+                    {row.indicatorType === "fx-official" ? "Official" : "Indicative parallel"}
+                  </td>
+                  <td>{displayValue(row.currencyPair)}</td>
+                  <td>{row.value === null ? "Not reported" : row.value}</td>
+                  <td>{displayValue(row.buySell)}</td>
+                  <td>{displayValue(row.cashTransfer)}</td>
+                  <td>{row.location}</td>
+                  <td>
+                    {formatDateTime(row.observedAt)}
+                    {isStale(row.observedAt) ? " · Stale" : ""}
+                  </td>
+                  <td>{sourceName(row.sourceId)}</td>
+                  <td>{displayValue(row.notes)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <EmptyState body="No approved FX observations are published." />
+      )}
+      <div class="card" style="margin-top:0.85rem">
+        <h3>Location-specific premiums</h3>
+        <ul>
+          {premiums.map((item) => (
+            <li>
+              <strong>{item.location}:</strong>{" "}
+              {item.ok
+                ? `${formatPremium(item.percent)} versus the matching official ${item.official.currencyPair} quote (${item.alignmentHours.toFixed(1)} hours apart).`
+                : `Not calculated. ${item.reason}`}
+            </li>
+          ))}
+        </ul>
+        <p class="muted">
+          Comparison limitations: quotes can differ by city, cash versus transfer, and bid versus offer. A stale or
+          missing observation is left blank rather than filled. Collection time is recorded separately from observation
+          time.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="infra-heading">
+      <h2 id="infra-heading">Infrastructure watch</h2>
+      <p class="section-note">
+        Electricity, water and internet rows are incident notes, not a comprehensive outage monitor.
+      </p>
+      <div class="grid grid-3">
+        {infraMatrix.map((cell) => (
+          <article class="card">
+            <div class="card-meta">
+              <span class="label">{cell.kind}</span>
+              <span class="label">{REGION_LABELS[cell.region]}</span>
+            </div>
+            {cell.rows.length ? (
+              cell.rows.map((row) => (
+                <div class="stack" style="margin-top:0.6rem">
+                  {row.demo && <span class="label label-demo">SAMPLE</span>}
+                  <p>
+                    <strong>{row.location}.</strong> Status: {row.infraStatus ? INFRA_STATUS_LABELS[row.infraStatus] : "Not reported"}.
+                  </p>
+                  <p class="muted">Observed: {formatDateTime(row.observedAt)}</p>
+                  <p class="muted">Source: {sourceName(row.sourceId)}</p>
+                  <p>Restoration: {displayValue(row.restorationUpdate)}</p>
+                  <p class="muted">{displayValue(row.notes)}</p>
+                </div>
+              ))
+            ) : (
+              <EmptyState body={`No verified ${cell.kind} update for ${REGION_LABELS[cell.region]}.`} />
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="oil-heading">
+      <h2 id="oil-heading">Oil, politics and UN</h2>
+      <p class="section-note">
+        Attributed statements are labelled as such. Libyan crude grades are not treated as Brent. Commodity prices are
+        shown only when a suitable feed exists.
+      </p>
+      {production.length > 0 && (
+        <div class="card" style="margin-bottom:0.85rem">
+          {production.map((row) => (
+            <p>
+              {row.demo && <span class="label label-demo">SAMPLE</span>} {row.indicatorType}: {row.value === null ? "Not reported" : `${row.value} ${row.unit}`}
+              {" · "}
+              {row.location} · {VERIFICATION_LABELS[row.verificationStatus]} · Observed {formatDateTime(row.observedAt)}
+              {row.notes ? ` · ${row.notes}` : ""}
+            </p>
+          ))}
+        </div>
+      )}
+      {commodities.length > 0 ? (
+        <div class="card">
+          {commodities.map((row) => (
+            <p>
+              {row.indicatorType === "brent" ? "Brent" : "Libyan crude"}: {row.value} {row.unit}
+            </p>
+          ))}
+        </div>
+      ) : (
+        <p class="muted">Commodity prices are hidden because no suitable feed is configured.</p>
+      )}
+      <div class="grid grid-2 oil-grid" style="margin-top:0.85rem">
+        {oilPolitics.map((article) => <ArticleCard article={article} />)}
+      </div>
+      <div id="oil-empty" hidden={oilPolitics.length > 0 ? true : undefined}>
+        <EmptyState body="No verified oil, political or UN update matches the current filter." />
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="week-heading">
+      <div class="section-head">
+        <h2 id="week-heading">Weekly outlook</h2>
+        <a href="/weekly">Open the weekly page</a>
+      </div>
+      {outlook ? (
+        <div class="card">
+          {outlook.demo && <span class="label label-demo">SAMPLE</span>}
+          <p>
+            Week of {outlook.weekStart} to {outlook.weekEnd}. Published {formatDateTime(outlook.publishedAt)}.
+          </p>
+          <ul>
+            {outlook.mainChanges.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      ) : (
+        <EmptyState body="No approved weekly outlook has been published." />
+      )}
+    </section>
+
+    <section class="section" aria-labelledby="method-heading">
+      <h2 id="method-heading">Methodology and sources</h2>
+      <p>
+        Verification, confidence labels, corrections and coverage limits are documented on the
+        <a href="/methodology">methodology page</a>. The live
+        <a href="/sources">source register</a> records what is enabled, reviewed, or still waiting for a verified feed.
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<script>
+  const form = document.getElementById("board-filters");
+  const tabs = [...document.querySelectorAll<HTMLButtonElement>("[data-region-tab]")];
+  const panels = [...document.querySelectorAll<HTMLElement>("[data-region-panel]")];
+
+  const apply = () => {
+    if (!(form instanceof HTMLFormElement)) return;
+    const data = new FormData(form);
+    const query = String(data.get("q") || "").trim().toLowerCase();
+    const region = String(data.get("region") || "all");
+    const sector = String(data.get("sector") || "all");
+    const category = String(data.get("category") || "all");
+    const selectedTab = tabs.find((tab) => tab.getAttribute("aria-selected") === "true")?.dataset.regionTab;
+
+    document.querySelectorAll<HTMLElement>(".article-card.is-filterable").forEach((card) => {
+      const haystack = card.dataset.search || "";
+      const sectors = card.dataset.sectors || "";
+      const categories = card.dataset.categories || "";
+      const cardRegion = card.dataset.region || "";
+      const matchesQuery = !query || haystack.includes(query);
+      const matchesRegion = region === "all" || cardRegion === region;
+      const matchesSector = sector === "all" || sectors.split(" ").includes(sector);
+      const matchesCategory = category === "all" || categories.split(" ").includes(category);
+      const inRegionalPanel = Boolean(card.closest("[data-region-panel]"));
+      const matchesTab = !inRegionalPanel || cardRegion === selectedTab;
+      card.classList.toggle("hidden", !(matchesQuery && matchesRegion && matchesSector && matchesCategory && matchesTab));
+    });
+
+    panels.forEach((panel) => {
+      const key = panel.dataset.regionPanel;
+      const visible = [...panel.querySelectorAll<HTMLElement>(".article-card")].filter((card) => !card.classList.contains("hidden"));
+      const empty = panel.querySelector<HTMLElement>(".js-region-empty");
+      if (empty) empty.hidden = visible.length > 0;
+      if (key) {
+        const tab = tabs.find((item) => item.dataset.regionTab === key);
+        if (tab) panel.hidden = tab.getAttribute("aria-selected") !== "true";
+      }
+    });
+
+    const oilCards = [...document.querySelectorAll<HTMLElement>(".oil-grid .article-card")];
+    const oilVisible = oilCards.filter((card) => !card.classList.contains("hidden"));
+    const oilEmpty = document.getElementById("oil-empty");
+    if (oilEmpty) oilEmpty.hidden = oilVisible.length > 0;
+  };
+
+  form?.addEventListener("input", apply);
+  form?.addEventListener("change", apply);
+
+  const selectTab = (target: HTMLButtonElement) => {
+    tabs.forEach((tab) => {
+      const on = tab === target;
+      tab.setAttribute("aria-selected", on ? "true" : "false");
+      tab.tabIndex = on ? 0 : -1;
+    });
+    apply();
+    target.focus();
+  };
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => selectTab(tab));
+    tab.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+        event.preventDefault();
+        const delta = event.key === "ArrowRight" ? 1 : -1;
+        const next = tabs[(index + delta + tabs.length) % tabs.length];
+        if (next) selectTab(next);
+      }
+    });
+  });
+
+  apply();
+</script>

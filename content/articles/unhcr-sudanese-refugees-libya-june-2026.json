@@ -1,0 +1,31 @@
+{
+  "id": "art-rw-unhcr-sudanese-2026-06",
+  "slug": "unhcr-sudanese-refugees-libya-june-2026",
+  "title": "UNHCR: more than 566,000 Sudanese arrivals in Libya estimated since April 2023, counts still incomplete",
+  "summary": "UNHCR's June 2026 CORE note on Sudanese refugees in Libya, posted on ReliefWeb, estimated over 566,043 arrivals since April 2023 and 93,831 Sudanese registered in Tripoli. UNHCR itself said irregular entry and remote borders make a precise total difficult.",
+  "whatHappened": "The UN High Commissioner for Refugees, in a CORE Libya note covering June 2026 (ReliefWeb posting 12 August 2026; originally dated 15 July 2026), estimated that over 566,043 Sudanese refugees had arrived in Libya since April 2023. UNHCR said that included 78,079 people registered after the Sudan conflict, bringing Sudanese registered at its Tripoli registration centre to 93,831. It said increased border monitoring by Libyan authorities had pushed refugees onto longer routes, with land-border arrivals averaging about 80 per day including entries from Egypt, Chad and Niger. UNHCR stated that irregular entry, ad hoc data from authorities, and the remote land borders with Chad, Egypt and Sudan, plus onward movement to coastal cities, make an accurate national count challenging. This board treats those figures as UNHCR estimates, not a census.",
+  "whyItMatters": "Planning for shelter, health and registration in the south and on the coast depends on whether desks use the large arrival estimate or the smaller registered total. UNHCR is warning that the gap is structural.",
+  "watchNext": "A later UNHCR CORE or registration update that revises the 566,043 / 93,831 pair, or an official Libyan statistical release covering the same population.",
+  "region": "national",
+  "locations": ["Tripoli", "Chad", "Egypt", "Niger"],
+  "categories": ["humanitarian"],
+  "sectors": ["un-humanitarian", "logistics"],
+  "eventTime": "2026-06-30T12:00:00+02:00",
+  "sourcePublishedAt": "2026-08-12T13:03:21.000Z",
+  "publishedAt": "2026-09-14T13:20:00+02:00",
+  "updatedAt": "2026-09-14T13:20:00+02:00",
+  "sourceIds": ["src-reliefweb-libya"],
+  "sourceUrls": [
+    "https://reliefweb.int/report/libya/core-libya-sudanese-refugees-and-asylum-seekers-jun-2026"
+  ],
+  "verificationStatus": "reported",
+  "confidence": "medium",
+  "confidenceRationale": "UNHCR overview HTML on ReliefWeb was read. The agency flags its own count as incomplete.",
+  "editorialStatus": "published",
+  "demo": false,
+  "severity": "high",
+  "direction": "mixed",
+  "disputedClaims": [],
+  "corrections": [],
+  "locale": "en"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "obs-oil-production-sample",
+  "indicatorType": "oil-production",
+  "value": null,
+  "unit": "bpd",
+  "currencyPair": null,
+  "location": "Libya (national figure not verified)",
+  "buySell": null,
+  "cashTransfer": null,
+  "observedAt": null,
+  "collectedAt": "2026-09-03T16:20:00+02:00",
+  "sourceId": "src-noc",
+  "verificationStatus": "unverified",
+  "demo": true,
+  "editorialStatus": "published",
+  "infraStatus": null,
+  "restorationUpdate": null,
+  "notes": "SAMPLE: no verified production number is available. Missing value is shown rather than estimated. Brent is omitted because no suitable price feed is configured."
+}

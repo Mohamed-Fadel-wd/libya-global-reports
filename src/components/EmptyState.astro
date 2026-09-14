@@ -1,0 +1,13 @@
+---
+interface Props {
+  title?: string;
+  body: string;
+}
+
+const { title = "No verified update", body } = Astro.props;
+---
+
+<div class="empty" role="status">
+  <strong>{title}.</strong>
+  <p class="muted" style="margin:0.35rem 0 0">{body}</p>
+</div>

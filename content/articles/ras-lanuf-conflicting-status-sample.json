@@ -1,0 +1,48 @@
+{
+  "id": "art-demo-002",
+  "slug": "ras-lanuf-conflicting-status-sample",
+  "title": "SAMPLE: Conflicting accounts of Ras Lanuf terminal status",
+  "summary": "Two sample statements disagree on whether loading at Ras Lanuf had resumed. The conflict is recorded rather than averaged into a single 'market view'.",
+  "whatHappened": "Statement A, attributed to a local operations contact, said loading had resumed. Statement B, attributed to a shipping agent note, said the terminal remained closed to commercial liftings. Neither document is an official NOC bulletin.",
+  "whyItMatters": "Eastern export availability changes cargo planning. Presenting only one of two conflicting accounts would hide uncertainty that operators need to see.",
+  "watchNext": "An official terminal or NOC notice that explicitly addresses loading status, or evidence that one of the two accounts has been withdrawn.",
+  "region": "east",
+  "locations": ["Ras Lanuf", "Sidra"],
+  "categories": ["oil"],
+  "sectors": ["oil-gas", "logistics"],
+  "eventTime": "2026-09-02T15:00:00+02:00",
+  "sourcePublishedAt": "2026-09-02T18:40:00+02:00",
+  "publishedAt": "2026-09-03T12:00:00+02:00",
+  "updatedAt": "2026-09-03T17:20:00+02:00",
+  "sourceIds": ["src-manual-editorial"],
+  "sourceUrls": [
+    "https://example.org/demo/ras-lanuf-statement-a",
+    "https://example.org/demo/ras-lanuf-statement-b"
+  ],
+  "verificationStatus": "disputed",
+  "confidence": "low",
+  "confidenceRationale": "Two attributed claims conflict; neither is independently corroborated.",
+  "editorialStatus": "published",
+  "demo": true,
+  "severity": "high",
+  "direction": "mixed",
+  "disputedClaims": [
+    {
+      "claim": "Loading at Ras Lanuf has resumed.",
+      "attributedTo": "Sample operations contact note (Statement A)",
+      "note": "Contradicted by Statement B. Not corroborated."
+    },
+    {
+      "claim": "Ras Lanuf remains closed to commercial liftings.",
+      "attributedTo": "Sample shipping agent note (Statement B)",
+      "note": "Contradicted by Statement A. Not corroborated."
+    }
+  ],
+  "corrections": [
+    {
+      "correctedAt": "2026-09-03T17:20:00+02:00",
+      "summary": "SAMPLE correction: an earlier draft sentence that treated Statement A as confirmed was removed. Both accounts are now labelled disputed."
+    }
+  ],
+  "locale": "en"
+}

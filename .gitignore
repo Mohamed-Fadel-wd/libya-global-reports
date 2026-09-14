@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.astro/
+.env
+editorial/cache/*
+!editorial/cache/.gitkeep
+editorial/private/
+editorial/drafts/queue/draft-rw-*.json
+.DS_Store

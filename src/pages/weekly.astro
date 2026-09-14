@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import EmptyState from "../components/EmptyState.astro";
+import { loadBoard } from "../lib/content";
+import { formatDateTime } from "../lib/time";
+
+const { outlooks } = loadBoard();
+const outlook = outlooks[0];
+---
+
+<BaseLayout title="Weekly outlook" description="Main changes, scheduled events and questions to monitor.">
+  <div class="wrap prose">
+    <h1 class="page-title">Weekly outlook</h1>
+    {outlook ? (
+      <>
+        {outlook.demo && <p class="demo-chip">SAMPLE week</p>}
+        <p class="lede">
+          Week of {outlook.weekStart} to {outlook.weekEnd}. Published {formatDateTime(outlook.publishedAt)}.
+        </p>
+        <h2>Main changes during the week</h2>
+        <ul>
+          {outlook.mainChanges.map((item) => <li>{item}</li>)}
+        </ul>
+        <h2>Scheduled events</h2>
+        {outlook.scheduledEvents.length ? (
+          <ul>
+            {outlook.scheduledEvents.map((item) => (
+              <li>
+                <strong>{item.date}:</strong> {item.text}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <EmptyState body="No scheduled events are recorded for this week." />
+        )}
+        <h2>Questions and indicators to monitor</h2>
+        <ul>
+          {outlook.monitorQuestions.map((item) => <li>{item}</li>)}
+        </ul>
+      </>
+    ) : (
+      <EmptyState body="No approved weekly outlook has been published." />
+    )}
+  </div>
+</BaseLayout>

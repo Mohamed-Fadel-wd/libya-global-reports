@@ -1,0 +1,14 @@
+{
+  "id": "draft-example-001",
+  "adapter": "fixture-reliefweb",
+  "sourceId": "src-fixture",
+  "canonicalUrl": "https://example.org/lgr-fixture/report-one",
+  "title": "Fixture item: Sudanese refugees and asylum-seekers in Libya (sample XML)",
+  "excerpt": "Short permitted excerpt for the draft queue. Full text is not stored.",
+  "sourcePublishedAt": "2026-09-01T10:00:00.000Z",
+  "collectedAt": "2026-09-03T16:40:00.000Z",
+  "contentHash": "replace-on-collect",
+  "editorialStatus": "draft",
+  "demo": false,
+  "language": "en"
+}

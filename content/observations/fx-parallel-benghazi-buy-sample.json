@@ -1,0 +1,19 @@
+{
+  "id": "obs-fx-parallel-benghazi-buy-sample",
+  "indicatorType": "fx-parallel",
+  "value": 7.4,
+  "unit": "LYD_per_1_foreign",
+  "currencyPair": "USD/LYD",
+  "location": "Benghazi",
+  "buySell": "buy",
+  "cashTransfer": "cash",
+  "observedAt": "2026-09-02T16:00:00+02:00",
+  "collectedAt": "2026-09-03T09:00:00+02:00",
+  "sourceId": "src-manual-editorial",
+  "verificationStatus": "reported",
+  "demo": true,
+  "editorialStatus": "published",
+  "infraStatus": null,
+  "restorationUpdate": null,
+  "notes": "SAMPLE Benghazi cash bid. Sell price not reported."
+}

@@ -1,0 +1,35 @@
+---
+import type { Article } from "../lib/schemas";
+import { CATEGORY_LABELS, CONFIDENCE_LABELS, DIRECTION_LABELS, REGION_LABELS, SECTOR_LABELS, SEVERITY_LABELS, VERIFICATION_LABELS } from "../lib/labels";
+import { searchText } from "../lib/publication";
+
+interface Props {
+  article: Article;
+  filterable?: boolean;
+}
+
+const { article, filterable = true } = Astro.props;
+---
+
+<article
+  class:list={["card", "article-card", filterable ? "is-filterable" : "is-locked"]}
+  data-region={article.region}
+  data-sectors={article.sectors.join(" ")}
+  data-categories={article.categories.join(" ")}
+  data-search={searchText(article)}
+>
+  <div class="card-meta">
+    {article.demo && <span class="label label-demo">SAMPLE</span>}
+    <span class="label">{REGION_LABELS[article.region]}</span>
+    {article.sectors.map((sector) => <span class="label">{SECTOR_LABELS[sector]}</span>)}
+    {article.categories.map((category) => <span class="label">{CATEGORY_LABELS[category]}</span>)}
+  </div>
+  <h3><a href={`/articles/${article.slug}`}>{article.title}</a></h3>
+  <p>{article.summary}</p>
+  <div class="card-meta" style="margin-top:0.65rem">
+    <span class={`label label-${article.severity}`}>{SEVERITY_LABELS[article.severity]}</span>
+    <span class={`label label-${article.confidence}`}>{CONFIDENCE_LABELS[article.confidence]}</span>
+    <span class="label">{DIRECTION_LABELS[article.direction]}</span>
+    <span class="label">{VERIFICATION_LABELS[article.verificationStatus]}</span>
+  </div>
+</article>

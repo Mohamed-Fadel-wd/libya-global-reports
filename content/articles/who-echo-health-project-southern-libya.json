@@ -1,0 +1,31 @@
+{
+  "id": "art-rw-who-echo-south-2026",
+  "slug": "who-echo-health-project-southern-libya",
+  "title": "WHO says ECHO-funded teams will take health services to farms and settlements in southern Libya",
+  "summary": "A WHO press note dated 14 July 2026, posted via ReliefWeb, described an eight-month ECHO-funded project for Sudanese refugees and host communities, mainly in Alkufra with added support in Alghatroun. It is a programme launch, not a claim that access is already restored.",
+  "whatHappened": "The World Health Organization, in a 14 July 2026 note issued from Tripoli, said it had launched a humanitarian health project funded by EU Civil Protection and Humanitarian Aid Operations (ECHO). WHO said the eight-month project would strengthen essential health and mental health services primarily in Alkufra, with additional support in Alghatroun, including integrated mobile medical teams for refugees on remote farms and in informal settlements. WHO Representative in Libya Dr Ahmed Zouiten was quoted on barriers to care in underserved areas. WHO said it has kept an operational presence in Alkufra since July 2024. This board has not independently confirmed deployment schedules on the ground.",
+  "whyItMatters": "Southern refugee concentrations are often off the coastal road net. A stated mobile-team plan changes what health and logistics desks should watch in Kufra and Ghatroun, without proving that clinics are already staffed.",
+  "watchNext": "Whether WHO or local health authorities publish a start date, catchment, or facility list for the mobile teams, and whether any partner disputes the geographic scope.",
+  "region": "south",
+  "locations": ["Alkufra", "Alghatroun", "Tripoli"],
+  "categories": ["humanitarian"],
+  "sectors": ["un-humanitarian", "logistics"],
+  "eventTime": "2026-07-14T12:00:00+02:00",
+  "sourcePublishedAt": "2026-07-14T00:00:00Z",
+  "publishedAt": "2026-09-14T13:10:00+02:00",
+  "updatedAt": "2026-09-14T13:10:00+02:00",
+  "sourceIds": ["src-reliefweb-libya"],
+  "sourceUrls": [
+    "https://reliefweb.int/report/libya/who-launches-echo-funded-project-expand-lifesaving-health-and-mental-health-services-sudanese-refugees-southern-libya"
+  ],
+  "verificationStatus": "reported",
+  "confidence": "medium",
+  "confidenceRationale": "Primary WHO press text was read on ReliefWeb. Field delivery is not independently corroborated.",
+  "editorialStatus": "published",
+  "demo": false,
+  "severity": "moderate",
+  "direction": "improving",
+  "disputedClaims": [],
+  "corrections": [],
+  "locale": "en"
+}

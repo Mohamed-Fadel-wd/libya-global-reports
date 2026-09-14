@@ -1,0 +1,31 @@
+{
+  "id": "art-rw-wfp-meb-2026-05",
+  "slug": "wfp-libya-market-prices-may-2026",
+  "title": "WFP: national minimum expenditure basket fell 5.6 percent in May after April's spike",
+  "summary": "WFP's May 2026 market-price note, posted on ReliefWeb on 22 June, said the national Full Minimum Expenditure Basket fell to LYD 1,180.44. West, east and south all eased versus April, with the steepest drop in the west. WFP still described markets as sensitive to the exchange rate.",
+  "whatHappened": "The World Food Programme said the national Full Minimum Expenditure Basket fell 5.6 percent in May 2026 to LYD 1,180.44, partly reversing April's increase. WFP attributed the decline mainly to food prices (Food MEB -6.8 percent to LYD 1,051.58) while the non-food basket rose 5.5 percent. Regionally, WFP said the west fell 10.6 percent to LYD 1,206.46, including Tripoli (-13.8 percent), Zwara, Nalut, Al Khums and Misrata; the east fell 1.7 percent to LYD 1,191.03 (Tobruk, Benghazi, Al Bayda down; Ejdabia and Derna up); the south fell 2.6 percent to LYD 1,141.62 (Ghat, Sebha, Wadi Alshati, Al Jufra down). WFP said improved foreign-currency availability and Central Bank of Libya liquidity injections helped narrow the official–parallel exchange-rate gap, but that markets remained vulnerable to exchange-rate swings. This board did not enter a CBL FX observation from that remark: no official table was attached.",
+  "whyItMatters": "Basket moves affect household costs and programme transfer values. A May correction after an April spike is not a year-to-date inflation rate, and WFP's CBL comment is not a verified FX pair on this board.",
+  "watchNext": "WFP's next monthly monitor, and any CBL publication that would allow a location-specific official quote under this board's FX rules.",
+  "region": "national",
+  "locations": ["Tripoli", "Benghazi", "Sebha", "Ghat", "Misrata"],
+  "categories": ["economy", "humanitarian"],
+  "sectors": ["un-humanitarian", "logistics"],
+  "eventTime": "2026-05-31T12:00:00+02:00",
+  "sourcePublishedAt": "2026-06-22T08:19:22.000Z",
+  "publishedAt": "2026-09-14T13:18:00+02:00",
+  "updatedAt": "2026-09-14T13:18:00+02:00",
+  "sourceIds": ["src-reliefweb-libya"],
+  "sourceUrls": [
+    "https://reliefweb.int/report/libya/wfp-libya-market-price-monitoring-may-2026"
+  ],
+  "verificationStatus": "reported",
+  "confidence": "medium",
+  "confidenceRationale": "WFP key-highlights HTML on ReliefWeb was read. Prices are WFP's basket, not a national CPI print.",
+  "editorialStatus": "published",
+  "demo": false,
+  "severity": "low",
+  "direction": "improving",
+  "disputedClaims": [],
+  "corrections": [],
+  "locale": "en"
+}

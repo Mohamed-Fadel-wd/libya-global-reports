@@ -1,0 +1,19 @@
+{
+  "id": "obs-fx-parallel-benghazi-sell-missing-sample",
+  "indicatorType": "fx-parallel",
+  "value": null,
+  "unit": "LYD_per_1_foreign",
+  "currencyPair": "USD/LYD",
+  "location": "Benghazi",
+  "buySell": "sell",
+  "cashTransfer": "cash",
+  "observedAt": "2026-09-02T16:00:00+02:00",
+  "collectedAt": "2026-09-03T09:00:00+02:00",
+  "sourceId": "src-manual-editorial",
+  "verificationStatus": "unverified",
+  "demo": true,
+  "editorialStatus": "published",
+  "infraStatus": null,
+  "restorationUpdate": null,
+  "notes": "SAMPLE row showing a missing sell quote. No number is invented."
+}

@@ -1,0 +1,35 @@
+{
+  "id": "art-demo-012",
+  "slug": "lna-attributed-security-note-sample",
+  "title": "SAMPLE: LNA-attributed security note on a southern road, unverified",
+  "summary": "A sample statement attributed to an LNA-affiliated information channel commented on a southern road. It is recorded as attribution only.",
+  "whatHappened": "A sample information note attributed to an LNA-affiliated channel said a stretch of road towards Kufra was 'secured'. No independent traveller or humanitarian movement report was available in the sample pack.",
+  "whyItMatters": "Security claims on southern roads affect logistics planning. Unverified 'secured' language is not evidence that civilian movement is safe or permitted.",
+  "watchNext": "A second, independent movement report, or a more specific notice naming the road segment and the period covered.",
+  "region": "south",
+  "locations": ["Kufra"],
+  "categories": ["security"],
+  "sectors": ["logistics"],
+  "eventTime": "2026-09-01T10:00:00+02:00",
+  "sourcePublishedAt": "2026-09-01T11:20:00+02:00",
+  "publishedAt": "2026-09-02T16:00:00+02:00",
+  "updatedAt": "2026-09-02T16:00:00+02:00",
+  "sourceIds": ["src-manual-editorial"],
+  "sourceUrls": ["https://example.org/demo/lna-road-note"],
+  "verificationStatus": "reported",
+  "confidence": "low",
+  "confidenceRationale": "Single affiliated channel; no independent corroboration.",
+  "editorialStatus": "published",
+  "demo": true,
+  "severity": "moderate",
+  "direction": "unknown",
+  "disputedClaims": [
+    {
+      "claim": "The road towards Kufra is secured.",
+      "attributedTo": "SAMPLE LNA-affiliated information note",
+      "note": "Attributed claim only. No independent movement confirmation."
+    }
+  ],
+  "corrections": [],
+  "locale": "en"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "brief-demo-2026-09-03",
+  "date": "2026-09-03",
+  "summary": "This is a fictional sample briefing for 3 September 2026. It shows how Libya Global Reports will summarise a day: what changed, where it matters, and what remains unverified. None of the items below are live events.",
+  "essentialArticleIds": [
+    "art-demo-001",
+    "art-demo-002",
+    "art-demo-004",
+    "art-demo-010",
+    "art-demo-006"
+  ],
+  "watchNext": [
+    "Whether any official terminal notice resolves the conflicting Ras Lanuf accounts.",
+    "Whether the Mellitah loading window is confirmed, completed or withdrawn.",
+    "Whether Tripoli warehouse appointments normalise within 48 hours.",
+    "Whether the western Tripoli feeder is marked restored.",
+    "Whether a UN product names participants or dates rather than repeating consultation language."
+  ],
+  "editorialStatus": "published",
+  "demo": true,
+  "publishedAt": "2026-09-03T18:00:00+02:00",
+  "locale": "en"
+}

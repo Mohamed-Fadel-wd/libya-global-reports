@@ -1,0 +1,19 @@
+{
+  "id": "obs-elec-tripoli-sample",
+  "indicatorType": "electricity",
+  "value": null,
+  "unit": "status",
+  "currencyPair": null,
+  "location": "Tripoli (west)",
+  "buySell": null,
+  "cashTransfer": null,
+  "observedAt": "2026-09-02T18:00:00+02:00",
+  "collectedAt": "2026-09-03T08:50:00+02:00",
+  "sourceId": "src-manual-editorial",
+  "verificationStatus": "reported",
+  "demo": true,
+  "editorialStatus": "published",
+  "infraStatus": "reported",
+  "restorationUpdate": "SAMPLE: still incomplete on the morning of 3 September 2026.",
+  "notes": "Feeder-level report. Not a national generation monitor."
+}

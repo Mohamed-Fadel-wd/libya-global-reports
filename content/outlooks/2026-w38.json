@@ -1,0 +1,23 @@
+{
+  "id": "week-2026-w38",
+  "weekStart": "2026-09-14",
+  "weekEnd": "2026-09-20",
+  "mainChanges": [
+    "First approved non-demo briefs are live: they summarise public WHO, IOM, FAO, WFP and UNHCR products already on ReliefWeb, not new field reporting by this board.",
+    "Southern file: WHO described an ECHO-funded health project for Alkufra and Alghatroun; IOM described late-May Ghat flood needs and well losses.",
+    "National mobility and prices: IOM said Q2 incoming border movements rose 23 percent while Niger-route flows fell; WFP said the May MEB eased after April.",
+    "No official FX or terminal notice was verified this week. Missing remains missing."
+  ],
+  "scheduledEvents": [],
+  "monitorQuestions": [
+    "Has any official source confirmed Ghat municipal well restoration?",
+    "Has WHO or a health partner dated the southern mobile-team deployments?",
+    "Is there a CBL table that would allow a location-specific official FX quote?",
+    "Has UNHCR published a later registration total than the June CORE note?",
+    "Has any partner disputed IOM's Q2 23 percent incoming-movement figure?"
+  ],
+  "editorialStatus": "published",
+  "demo": false,
+  "publishedAt": "2026-09-14T13:32:00+02:00",
+  "locale": "en"
+}

@@ -1,0 +1,55 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { loadBoard } from "../lib/content";
+import { formatDateTime } from "../lib/time";
+
+const { sources } = loadBoard();
+---
+
+<BaseLayout title="Source register" description="Sources reviewed for Libya Global Reports, including disabled feeds.">
+  <div class="wrap">
+    <h1 class="page-title">Source register</h1>
+    <p class="lede">
+      Enabled collectors must be reviewed. Disabled rows document what was checked and what is still missing. Room is
+      kept for about 15 sources.
+    </p>
+    <div class="table-wrap card">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Language</th>
+            <th>Coverage</th>
+            <th>Method</th>
+            <th>Review</th>
+            <th>Enabled</th>
+            <th>Reuse notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sources.map((source) => (
+            <tr>
+              <td><code>{source.id}</code></td>
+              <td>
+                <a href={source.url}>{source.name}</a>
+              </td>
+              <td>{source.sourceType}</td>
+              <td>{source.language}</td>
+              <td>{source.geographicCoverage.join(", ")}</td>
+              <td>{source.collectionMethod}</td>
+              <td>{source.reviewStatus}</td>
+              <td>{source.enabled ? "Yes" : "No"}</td>
+              <td>
+                {source.reuseNotes}
+                {source.endpoint ? ` Endpoint: ${source.endpoint}.` : ""}
+                {source.robotsCheckedAt ? ` Robots checked ${formatDateTime(source.robotsCheckedAt)}.` : ""}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</BaseLayout>

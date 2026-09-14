@@ -1,0 +1,14 @@
+{
+  "id": "draft-fixture-002",
+  "adapter": "fixture-reliefweb",
+  "sourceId": "src-fixture",
+  "canonicalUrl": "https://example.org/lgr-fixture/report-two",
+  "title": "Fixture item: Migration trends at Libya borders (sample XML)",
+  "excerpt": "Second fixture excerpt for deduplication tests.",
+  "sourcePublishedAt": "2026-08-31T09:00:00.000Z",
+  "collectedAt": "2026-09-10T21:29:39.989Z",
+  "contentHash": "30d576eb85ab7a52e9768b59eab77dc5100f797ee15feb16e91adedcb1c83add",
+  "editorialStatus": "draft",
+  "demo": false,
+  "language": "en"
+}

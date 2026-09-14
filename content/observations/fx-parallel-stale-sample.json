@@ -1,0 +1,19 @@
+{
+  "id": "obs-fx-parallel-stale-sample",
+  "indicatorType": "fx-parallel",
+  "value": 6.9,
+  "unit": "LYD_per_1_foreign",
+  "currencyPair": "USD/LYD",
+  "location": "Misrata",
+  "buySell": "mid",
+  "cashTransfer": "transfer",
+  "observedAt": "2026-07-12T10:00:00+02:00",
+  "collectedAt": "2026-09-03T16:10:00+02:00",
+  "sourceId": "src-manual-editorial",
+  "verificationStatus": "reported",
+  "demo": true,
+  "editorialStatus": "published",
+  "infraStatus": null,
+  "restorationUpdate": null,
+  "notes": "SAMPLE stale transfer quote. Too old to compare with the 3 September official table."
+}

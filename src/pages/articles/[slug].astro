@@ -1,0 +1,104 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getArticleBySlug, loadBoard } from "../../lib/content";
+import { formatDateTime } from "../../lib/time";
+import {
+  CATEGORY_LABELS,
+  CONFIDENCE_LABELS,
+  DIRECTION_LABELS,
+  REGION_LABELS,
+  SECTOR_LABELS,
+  SEVERITY_LABELS,
+  VERIFICATION_LABELS,
+} from "../../lib/labels";
+export function getStaticPaths() {
+  return loadBoard().articles.map((article) => ({ params: { slug: article.slug } }));
+}
+
+const { slug } = Astro.params;
+const article = getArticleBySlug(slug ?? "");
+if (!article) {
+  throw new Error(`Published article not found for slug ${slug}`);
+}
+const board = loadBoard();
+const sources = article.sourceIds.map((id) => board.sources.find((source) => source.id === id)).filter(Boolean);
+---
+
+<BaseLayout title={article.title} description={article.summary}>
+  <article class="wrap prose">
+    <p class="card-meta">
+      {article.demo && <span class="label label-demo">SAMPLE — fictional demonstration</span>}
+      <span class="label">{REGION_LABELS[article.region]}</span>
+      {article.sectors.map((sector) => <span class="label">{SECTOR_LABELS[sector]}</span>)}
+    </p>
+    <h1 class="page-title">{article.title}</h1>
+    <p class="lede">{article.summary}</p>
+    <p class="muted">
+      Locations: {article.locations.join(", ")}. Categories: {article.categories.map((category) => CATEGORY_LABELS[category]).join(", ")}.
+    </p>
+
+    <h2>What happened</h2>
+    <p>{article.whatHappened}</p>
+    <h2>Why it matters</h2>
+    <p>{article.whyItMatters}</p>
+    <h2>What to watch next</h2>
+    <p>{article.watchNext}</p>
+
+    <h2>Evidence labels</h2>
+    <ul>
+      <li>{SEVERITY_LABELS[article.severity]} — this is a qualitative editorial label, not a probability or risk score.</li>
+      <li>{CONFIDENCE_LABELS[article.confidence]}: {article.confidenceRationale}</li>
+      <li>Verification: {VERIFICATION_LABELS[article.verificationStatus]}</li>
+      <li>Direction of change: {DIRECTION_LABELS[article.direction]}</li>
+    </ul>
+
+    {article.disputedClaims.length > 0 && (
+      <>
+        <h2>Disputed or attributed claims</h2>
+        <ul>
+          {article.disputedClaims.map((claim) => (
+            <li>
+              <strong>{claim.attributedTo}:</strong> “{claim.claim}” — {claim.note}
+            </li>
+          ))}
+        </ul>
+      </>
+    )}
+
+    {article.corrections.length > 0 && (
+      <>
+        <h2>Correction history</h2>
+        <ul>
+          {article.corrections.map((item) => (
+            <li>
+              {formatDateTime(item.correctedAt)}: {item.summary}
+            </li>
+          ))}
+        </ul>
+      </>
+    )}
+
+    <h2>Timestamps</h2>
+    <ul>
+      <li>Event time: {formatDateTime(article.eventTime)}</li>
+      <li>Source publication time: {formatDateTime(article.sourcePublishedAt)}</li>
+      <li>Our publication time: {formatDateTime(article.publishedAt)}</li>
+      <li>Our last update: {formatDateTime(article.updatedAt)}</li>
+    </ul>
+
+    <h2>Sources</h2>
+    <ul>
+      {sources.map((source) => source && (
+        <li>
+          {source.name} — <a href={source.url}>{source.url}</a>
+        </li>
+      ))}
+      {article.sourceUrls.map((url) => (
+        <li>
+          Linked document: <a href={url} rel="nofollow noopener">{url}</a>
+        </li>
+      ))}
+    </ul>
+    <p class="muted">Shareable URL for this article. Demo items are excluded from the public RSS feed.</p>
+  </article>
+</BaseLayout>

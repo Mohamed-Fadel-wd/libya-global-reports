@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Fixture — Libya updates</title>
+    <link>https://example.org/lgr-fixture</link>
+    <description>Local fixture for collector tests. Not a live ReliefWeb feed.</description>
+    <item>
+      <title>Fixture item: Sudanese refugees and asylum-seekers in Libya (sample XML)</title>
+      <link>https://example.org/lgr-fixture/report-one</link>
+      <guid isPermaLink="true">https://example.org/lgr-fixture/report-one</guid>
+      <pubDate>Tue, 01 Sep 2026 10:00:00 +0000</pubDate>
+      <description><![CDATA[<p>Short permitted excerpt for the draft queue. Full text is not stored.</p><script>alert(1)</script>]]></description>
+    </item>
+    <item>
+      <title>Fixture item: Migration trends at Libya borders (sample XML)</title>
+      <link>https://example.org/lgr-fixture/report-two</link>
+      <guid isPermaLink="true">https://example.org/lgr-fixture/report-two</guid>
+      <pubDate>Mon, 31 Aug 2026 09:00:00 +0000</pubDate>
+      <description>Second fixture excerpt for deduplication tests.</description>
+    </item>
+    <item>
+      <title>Fixture item with unsafe URL</title>
+      <link>javascript:alert(1)</link>
+      <description>This item must be dropped by URL sanitisation.</description>
+    </item>
+  </channel>
+</rss>

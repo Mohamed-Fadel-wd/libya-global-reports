@@ -1,0 +1,35 @@
+{
+  "id": "art-demo-009",
+  "slug": "gnu-statement-oil-guards-sample",
+  "title": "SAMPLE: GNU-attributed remarks on facility guards, not an independent finding",
+  "summary": "A sample statement attributed to a GNU spokesperson commented on oil-facility guards. The remarks are recorded as attribution, not as verified fact.",
+  "whatHappened": "A sample press note attributed to a GNU spokesperson said arrangements for facility guards would be reviewed. No implementing decree or NOC confirmation was attached.",
+  "whyItMatters": "Guard arrangements can affect terminal access. Attributed political remarks are not the same as a change on the ground.",
+  "watchNext": "A written decision, an NOC comment, or evidence of an actual change at a named facility.",
+  "region": "national",
+  "locations": ["Tripoli"],
+  "categories": ["politics", "oil"],
+  "sectors": ["oil-gas"],
+  "eventTime": "2026-09-03T12:00:00+02:00",
+  "sourcePublishedAt": "2026-09-03T12:45:00+02:00",
+  "publishedAt": "2026-09-03T15:30:00+02:00",
+  "updatedAt": "2026-09-03T15:30:00+02:00",
+  "sourceIds": ["src-manual-editorial"],
+  "sourceUrls": ["https://example.org/demo/gnu-spokesperson-note"],
+  "verificationStatus": "reported",
+  "confidence": "medium",
+  "confidenceRationale": "Clear attribution to a named institutional voice; the underlying policy change is unverified.",
+  "editorialStatus": "published",
+  "demo": true,
+  "severity": "low",
+  "direction": "unknown",
+  "disputedClaims": [
+    {
+      "claim": "Facility-guard arrangements will change in the near term.",
+      "attributedTo": "SAMPLE GNU spokesperson note",
+      "note": "Recorded as an attributed statement. No implementing text seen."
+    }
+  ],
+  "corrections": [],
+  "locale": "en"
+}

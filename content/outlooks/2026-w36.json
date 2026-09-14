@@ -1,0 +1,36 @@
+{
+  "id": "week-demo-2026-w36",
+  "weekStart": "2026-08-31",
+  "weekEnd": "2026-09-06",
+  "mainChanges": [
+    "SAMPLE: Western export-point notices and eastern terminal accounts diverged; both remain unconfirmed.",
+    "SAMPLE: Logistics friction was reported on the Sebha corridor and at Misrata berths.",
+    "SAMPLE: Local electricity, water and connectivity incidents were reported in Tripoli, Benghazi and Murzuq. None of these are a national outage feed.",
+    "SAMPLE: Political and UN items stayed at the level of attributed remarks and consultation language."
+  ],
+  "scheduledEvents": [
+    {
+      "date": "2026-09-04",
+      "text": "SAMPLE calendar: fictional NOC operations call — not a real scheduled event."
+    },
+    {
+      "date": "2026-09-05",
+      "text": "SAMPLE calendar: fictional humanitarian logistics coordination slot in Tripoli."
+    },
+    {
+      "date": "2026-09-08",
+      "text": "SAMPLE calendar: fictional CBL circular window for an official FX table. No live circular is attached."
+    }
+  ],
+  "monitorQuestions": [
+    "Has any official source closed the Ras Lanuf contradiction?",
+    "Are Tripoli warehouse appointment delays still being reported?",
+    "Is the Benghazi pumping station restored, or still unknown?",
+    "Are location-specific parallel quotes still comparable with the official USD table?",
+    "Has South electricity produced any verified update? Absence is not a normal-conditions report."
+  ],
+  "editorialStatus": "published",
+  "demo": true,
+  "publishedAt": "2026-09-03T18:30:00+02:00",
+  "locale": "en"
+}

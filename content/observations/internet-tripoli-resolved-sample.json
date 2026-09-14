@@ -1,0 +1,19 @@
+{
+  "id": "obs-internet-tripoli-resolved-sample",
+  "indicatorType": "internet",
+  "value": null,
+  "unit": "status",
+  "currencyPair": null,
+  "location": "Tripoli",
+  "buySell": null,
+  "cashTransfer": null,
+  "observedAt": "2026-09-01T09:00:00+02:00",
+  "collectedAt": "2026-09-03T10:00:00+02:00",
+  "sourceId": "src-manual-editorial",
+  "verificationStatus": "corroborated",
+  "demo": true,
+  "editorialStatus": "published",
+  "infraStatus": "resolved",
+  "restorationUpdate": "SAMPLE: service described as restored by 2 September 2026, 16:00 Africa/Tripoli.",
+  "notes": "Included to show a resolved row next to open incidents."
+}

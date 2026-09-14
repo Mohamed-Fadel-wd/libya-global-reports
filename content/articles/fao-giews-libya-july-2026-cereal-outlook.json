@@ -1,0 +1,31 @@
+{
+  "id": "art-rw-fao-giews-2026-07",
+  "slug": "fao-giews-libya-july-2026-cereal-outlook",
+  "title": "FAO GIEWS: 2026 cereal crop seen about 20 percent below average, with dry weather worst in the east",
+  "summary": "FAO's GIEWS country brief dated 16 July 2026, posted on ReliefWeb the next day, forecast Libya's 2026 cereal output near 150,000 tonnes and import needs of 3.3 million tonnes for 2026/27. These are FAO model figures, not a harvest census.",
+  "whatHappened": "The FAO Global Information and Early Warning System brief of 16 July 2026 said harvesting of 2026 winter wheat and barley had started in May and was expected to finish by late July. FAO said dry weather in October–November 2025 delayed planting and cut planted area, and that rainfall stayed well below average in the east, particularly in Al Jabal Al Akhdar. It forecast total 2026 cereal production at about 150,000 tonnes, nearly 20 percent below the five-year average, and cereal import requirements for the 2026/27 marketing year (July/June) at 3.3 million tonnes, nearly 7 percent above average, including about 1.5 million tonnes of wheat. FAO said food inflation rose about 18 percent year-on-year in May 2026, linking that in part to dinar depreciation of about 15 percent versus a year earlier. It also cited UNHCR's figure of more than 110,000 registered refugees as of April 2026 when discussing constrained humanitarian funding. This board has not reproduced FAO's tables or a CBL inflation print.",
+  "whyItMatters": "Import-dependent food supply and eastern yield stress affect logistics and household costs. A GIEWS snapshot is an early-warning product, not a substitute for customs or mill data.",
+  "watchNext": "A later FAO update, or an official production/import table that confirms or revises the 150,000-tonne and 3.3-million-tonne figures.",
+  "region": "east",
+  "locations": ["Al Jabal Al Akhdar", "Libya"],
+  "categories": ["economy", "humanitarian"],
+  "sectors": ["un-humanitarian", "logistics"],
+  "eventTime": "2026-07-16T12:00:00+02:00",
+  "sourcePublishedAt": "2026-07-17T07:05:10.000Z",
+  "publishedAt": "2026-09-14T13:14:00+02:00",
+  "updatedAt": "2026-09-14T13:14:00+02:00",
+  "sourceIds": ["src-reliefweb-libya"],
+  "sourceUrls": [
+    "https://reliefweb.int/report/libya/giews-country-brief-libya-16-july-2026"
+  ],
+  "verificationStatus": "reported",
+  "confidence": "medium",
+  "confidenceRationale": "FAO GIEWS HTML on ReliefWeb was read. Production and inflation figures are the agency's; not independently audited here.",
+  "editorialStatus": "published",
+  "demo": false,
+  "severity": "moderate",
+  "direction": "deteriorating",
+  "disputedClaims": [],
+  "corrections": [],
+  "locale": "en"
+}

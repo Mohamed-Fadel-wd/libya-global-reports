@@ -1,0 +1,19 @@
+{
+  "id": "obs-water-benghazi-sample",
+  "indicatorType": "water",
+  "value": null,
+  "unit": "status",
+  "currencyPair": null,
+  "location": "Benghazi",
+  "buySell": null,
+  "cashTransfer": null,
+  "observedAt": "2026-09-01T23:30:00+02:00",
+  "collectedAt": "2026-09-02T12:00:00+02:00",
+  "sourceId": "src-manual-editorial",
+  "verificationStatus": "reported",
+  "demo": true,
+  "editorialStatus": "published",
+  "infraStatus": "unknown",
+  "restorationUpdate": "Not reported",
+  "notes": "Pumping station offline in the sample note; restoration unknown."
+}

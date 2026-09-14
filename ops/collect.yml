@@ -1,0 +1,38 @@
+# Manual twice-daily collection — disabled by default.
+#
+# GitHub Actions minutes are free for public repositories and limited on private
+# free plans. This workflow does not enable a schedule until you uncomment it
+# and confirm your plan. It never publishes content: it only writes drafts and
+# uploads them as an artifact.
+#
+# Copy to the repository root as `.github/workflows/lgr-collect.yml` if you
+# want the workflow registered. Do not enable a schedule until hosting and
+# Actions limits have been checked.
+
+name: LGR collect drafts
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: "0 6,18 * * *"
+
+jobs:
+  collect:
+    if: false
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/libya-global-reports
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: apps/libya-global-reports/package-lock.json
+      - run: npm ci
+      - run: npm run collect -- --adapter=reliefweb-libya-rss
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lgr-drafts
+          path: apps/libya-global-reports/editorial/drafts

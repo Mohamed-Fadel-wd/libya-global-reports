@@ -1,0 +1,31 @@
+{
+  "id": "art-rw-unhcr-siraj-2026-05",
+  "slug": "unhcr-tripoli-siraj-protest-may-2026",
+  "title": "UNHCR: May 2026 protest and reported evictions near its Tripoli office after an online campaign",
+  "summary": "UNHCR's 31 May 2026 operational update, posted on ReliefWeb, said residents of Tripoli's Al-Siraj area protested at its office on 14 May after an online campaign, and that a video later showed eviction of refugees nearby. These are UNHCR's account of events, not a court finding.",
+  "whatHappened": "UNHCR said that throughout May 2026 it faced an escalating online hate-speech campaign and calls to close its offices, with a rise in anti-refugee sentiment. On 14 May, it said, residents of the Al-Siraj area in Tripoli protested in front of the UNHCR office after an online campaign by the Al-Siraj Social Council citing security concerns. UNHCR said its Chief of Mission met activists, that videos of those exchanges circulated, and that the council warned property owners to evict tenants. UNHCR said a later video showed eviction of refugees living near the office, including demolition of temporary shelters. The same update said the call centre processed over 39,600 calls in the period, with reports of anti-refugee incidents in western Libya including forced evictions, assaults, arrests and extortion, particularly in Tripoli and nearby cities. This board has not independently verified the videos or the council statements.",
+  "whyItMatters": "Access to the UNHCR office and to nearby shelter in western Tripoli is an operational constraint for protection partners. An agency situation report is still a single-channel account.",
+  "watchNext": "Any UNHCR follow-up that the Al-Siraj office access has changed, or a municipal/police statement that confirms or disputes the 14 May protest and evictions.",
+  "region": "west",
+  "locations": ["Tripoli", "Al-Siraj"],
+  "categories": ["humanitarian", "security"],
+  "sectors": ["un-humanitarian"],
+  "eventTime": "2026-05-14T12:00:00+02:00",
+  "sourcePublishedAt": "2026-07-09T01:43:55.000Z",
+  "publishedAt": "2026-09-14T13:22:00+02:00",
+  "updatedAt": "2026-09-14T13:22:00+02:00",
+  "sourceIds": ["src-reliefweb-libya"],
+  "sourceUrls": [
+    "https://reliefweb.int/report/libya/unhcr-libya-operational-update-31-may-2026"
+  ],
+  "verificationStatus": "reported",
+  "confidence": "medium",
+  "confidenceRationale": "UNHCR operational-update HTML on ReliefWeb was read. Protest and eviction details are UNHCR's; videos were not reviewed here.",
+  "editorialStatus": "published",
+  "demo": false,
+  "severity": "high",
+  "direction": "deteriorating",
+  "disputedClaims": [],
+  "corrections": [],
+  "locale": "en"
+}

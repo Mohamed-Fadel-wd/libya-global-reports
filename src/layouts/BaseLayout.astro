@@ -1,0 +1,123 @@
+---
+import "../styles/global.css";
+import { loadBoard } from "../lib/content";
+import { formatDateTime, maxTimestamp } from "../lib/time";
+import { sanitizeContactHref } from "../lib/sanitize";
+
+interface Props {
+  title?: string;
+  description?: string;
+  noIndex?: boolean;
+}
+
+const board = loadBoard();
+const { settings, demoActive, contactHref, articles, briefings } = board;
+const lastPublished = maxTimestamp([
+  ...articles.map((article) => article.updatedAt),
+  ...briefings.map((briefing) => briefing.publishedAt),
+]);
+const pathName = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+const title = Astro.props.title
+  ? `${Astro.props.title} — ${settings.siteName}`
+  : `${settings.siteName} — ${settings.tagline}`;
+const description =
+  Astro.props.description ||
+  "Free professional news and intelligence board for oil and gas, UN and humanitarian, telecommunications and logistics work in Libya.";
+const canonical = new URL(Astro.url.pathname, settings.siteUrl).toString();
+const noIndex = Boolean(Astro.props.noIndex);
+---
+
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow"} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate" type="application/rss+xml" title={`${settings.siteName} RSS`} href="/rss.xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="/">
+          <span class="brand-kicker">Intelligence board</span>
+          <span class="brand-name">{settings.siteName}</span>
+          <span class="brand-tagline">{settings.tagline}</span>
+        </a>
+        <div class="header-meta">
+          <p class="meta-chip">Last published: {formatDateTime(lastPublished)}</p>
+          {demoActive && <p class="demo-chip">Sample content</p>}
+          <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" id="nav-toggle">
+            Menu
+          </button>
+        </div>
+        <nav class="site-nav" id="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="/" aria-current={pathName === "/" ? "page" : undefined}>Board</a></li>
+            <li><a href="/weekly" aria-current={pathName === "/weekly" ? "page" : undefined}>Weekly outlook</a></li>
+            <li><a href="/sources" aria-current={pathName === "/sources" ? "page" : undefined}>Sources</a></li>
+            <li><a href="/methodology" aria-current={pathName === "/methodology" ? "page" : undefined}>Methodology</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    {demoActive && (
+      <div class="demo-banner">
+        <p class="wrap">
+          Sample content is on. Cards and figures labelled SAMPLE are fictional demonstration data, not live events,
+          prices or official notices.
+        </p>
+      </div>
+    )}
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <p>
+          {settings.siteName}. Free public access. No accounts, advertising or tracking cookies in this MVP.
+        </p>
+        <p>
+          {contactHref ? (
+            <a href={sanitizeContactHref(contactHref) || undefined}>Contact and feedback</a>
+          ) : (
+            <span>Feedback link not configured.</span>
+          )}
+          {" · "}
+          <a href="/rss.xml">RSS</a>
+          {" · "}
+          <a href="/methodology">Methodology</a>
+        </p>
+      </div>
+    </footer>
+    <script>
+      const toggle = document.getElementById("nav-toggle");
+      const nav = document.getElementById("site-nav");
+      if (toggle instanceof HTMLButtonElement && nav) {
+        const close = () => {
+          nav.classList.remove("is-open");
+          toggle.setAttribute("aria-expanded", "false");
+        };
+        toggle.addEventListener("click", () => {
+          const open = toggle.getAttribute("aria-expanded") !== "true";
+          toggle.setAttribute("aria-expanded", open ? "true" : "false");
+          nav.classList.toggle("is-open", open);
+        });
+        nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", close));
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") close();
+        });
+      }
+    </script>
+  </body>
+</html>
