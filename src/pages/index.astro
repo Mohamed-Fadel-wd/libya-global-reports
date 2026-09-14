@@ -176,7 +176,7 @@ function sourceName(id: string) {
     <section class="section" aria-labelledby="fx-heading">
       <div class="section-head">
         <h2 id="fx-heading">Currency board</h2>
-        <span class="demo-chip">SAMPLE quotes</span>
+        {fx.some((row) => row.demo) && <span class="demo-chip">SAMPLE quotes</span>}
       </div>
       <p class="section-note">
         Quotes are location-specific. There is no nationwide parallel-market rate on this board. Premium =
