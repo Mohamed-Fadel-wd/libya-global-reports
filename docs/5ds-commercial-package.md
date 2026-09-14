@@ -157,7 +157,7 @@ Targets marked **unknown** are not commitments.
 | Non-demo published articles | Approved items with `demo: false` and `editorialStatus: published` | Count | All-time and last 30 days | `content/articles` | Editor | Unknown until cadence is chosen | Monthly |
 | RSS eligibility | Items that may appear on `/rss.xml` | Count of published ∧ ¬demo | Feed | Build | Editor | > 0 before demo off | Per build |
 | Publishing-day kept | Briefing published or explicit “no verified update” recorded | Binary per scheduled day | Day | Git / log | Editor | Unknown | Weekly |
-| SAMPLE still on | `showDemoContent` | Boolean | Site | `settings.json` | Editor | false only after 5–10 real articles | Per release |
+| SAMPLE still on | `showDemoContent` | Boolean | Site | `settings.json` | Editor | false (set 14 Sep 2026) | Per release |
 | Collector allowed | Adapter completed without robots/bot block | Boolean per run | Run | CLI log | Maintainer | ReliefWeb or equivalent = true | Per collect |
 | Named readers | Professionals who opted in to be listed internally | Count, tagged by sector | Person | Private list (not on site) | Founder | 10–30 before Gate C | Monthly |
 | Org conversations | Distinct organisations spoken to about depth | Count | Org | Private notes | Founder | ≥ 3 before Gate D | Quarterly |

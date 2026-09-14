@@ -2,9 +2,9 @@
   "siteName": "Libya Global Reports",
   "tagline": "Daily context for decisions in Libya.",
   "timezone": "Africa/Tripoli",
-  "showDemoContent": true,
+  "showDemoContent": false,
   "contactHref": "",
   "siteUrl": "http://localhost:4321",
-  "lastReviewedAt": "2026-09-14T13:30:00+02:00",
+  "lastReviewedAt": "2026-09-14T18:30:00+02:00",
   "fxAlignmentHours": 48
 }

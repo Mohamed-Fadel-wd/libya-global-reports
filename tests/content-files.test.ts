@@ -12,11 +12,13 @@ describe("repository content", () => {
     expect(board.observations.some((item) => item.location === "Should not appear")).toBe(false);
   });
 
-  it("keeps demo samples out of RSS and includes approved non-demo articles", async () => {
+  it("hides demo samples from the site while keeping them in the tree and out of RSS", async () => {
     const board = await loadBoardFromFs(path.resolve("."));
+    expect(board.settings.showDemoContent).toBe(false);
+    expect(board.allArticles.some((article) => article.demo)).toBe(true);
     expect(board.articles.length).toBeGreaterThan(0);
-    expect(board.articles.some((article) => article.demo)).toBe(true);
-    expect(board.rssItems.length).toBeGreaterThan(0);
+    expect(board.articles.every((article) => article.demo === false)).toBe(true);
+    expect(board.rssItems).toHaveLength(7);
     expect(board.rssItems.every((article) => article.demo === false && article.editorialStatus === "published")).toBe(
       true,
     );

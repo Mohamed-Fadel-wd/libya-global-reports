@@ -11,10 +11,10 @@ This is a **separate static app** from the Libyan TEDx Archive in `apps/web`. It
 - Publishes an editorial dashboard: briefing, regional watch, currency board, infrastructure watch, oil/politics/UN, weekly outlook, methodology and sources.
 - Validates structured JSON during `npm run validate` and `npm run build`.
 - Collects **drafts only** from enabled, reviewed sources. Nothing is auto-published.
-- Works with demo/sample content clearly labelled **SAMPLE** until the demo-off gate in `docs/editorial-cadence.md`.
+- SAMPLE files remain in `content/` for fixtures and tests. They are **not** shown on the public board (`showDemoContent: false`).
 - Works with JavaScript disabled, except for search/filters and the mobile menu.
 
-Operating plan (paper): [docs/5ds-commercial-package.md](docs/5ds-commercial-package.md), [docs/audience-analysis.md](docs/audience-analysis.md), [docs/editorial-cadence.md](docs/editorial-cadence.md), [docs/deploy.md](docs/deploy.md), [docs/phase-a-status.md](docs/phase-a-status.md). Paid-depth **code** is blocked until Gate D; the architecture note is [docs/paid-depth-architecture.md](docs/paid-depth-architecture.md).
+Operating plan (paper): [docs/5ds-commercial-package.md](docs/5ds-commercial-package.md), [docs/audience-analysis.md](docs/audience-analysis.md), [docs/editorial-cadence.md](docs/editorial-cadence.md), [docs/deploy.md](docs/deploy.md), [docs/phase-a-status.md](docs/phase-a-status.md), [docs/phase-b-status.md](docs/phase-b-status.md). Paid-depth **code** is blocked until Gate D; the architecture note is [docs/paid-depth-architecture.md](docs/paid-depth-architecture.md).
 
 ## Local setup
 
@@ -82,13 +82,11 @@ An optional workflow template lives at `ops/collect.yml`. It is **not** installe
 
 There is no admin UI and no login. Publication is a git change.
 
-## Removing demo mode
+## Demo mode (off on the public board)
 
-Do not turn SAMPLE off until at least **five** approved non-demo articles exist (prefer ten). `npm run validate` refuses a non-demo build before that gate.
+The public board ships with `"showDemoContent": false`. Sample JSON files stay in git but do not appear on pages or in RSS. Empty/no-verified-update states are expected where coverage is missing (FX, infrastructure, some regions).
 
-When the gate passes: in `content/settings.json` set `"showDemoContent": false`, or set `LGR_SHOW_DEMO=false` in the environment, then rebuild. Sample articles disappear. Empty/no-verified-update states are expected where coverage is missing.
-
-To delete sample files, remove the `*-sample.json` records under `content/`.
+`npm run validate` refuses a non-demo build if fewer than five approved non-demo articles exist. To inspect SAMPLE files locally, set `LGR_SHOW_DEMO=true` and rebuild. Do not delete `*-sample.json` unless an editor is retiring the fixtures.
 
 ## Editorial cadence
 
@@ -98,18 +96,18 @@ On publishing days, either publish a briefing (and any verified FX/infra rows) o
 
 The site does not require AI. `src/lib/ai.ts` is a disabled server-side interface with a request-limit guard and a $10 / $5 reserve configuration. It is not wired to a provider. Do not put API keys in client code. Any future AI text must remain a draft until reviewed. Request limits are **not** the same as verified provider spend.
 
-## Optional deployment (host not enabled by default)
+## Optional deployment
 
-A public origin is **not live** until you enable a host. The deploy path is documented in [docs/deploy.md](docs/deploy.md).
+The public origin is [https://mohamed-fadel-wd.github.io/libya-global-reports](https://mohamed-fadel-wd.github.io/libya-global-reports). The deploy path is documented in [docs/deploy.md](docs/deploy.md).
 
-- GitHub Pages: the **private** monorepo cannot use Pages on the current GitHub plan. A public sibling repo `libya-global-reports` is the free origin: `https://mohamed-fadel-wd.github.io/libya-global-reports` (`LGR_BASE_PATH=/libya-global-reports`). Workflow: `apps/libya-global-reports/.github/workflows/pages.yml`. Keep `LGR_SHOW_DEMO=true` until the demo-off gate.
+- GitHub Pages: the **private** monorepo cannot use Pages on the current GitHub plan. A public sibling repo `libya-global-reports` is the free origin: `https://mohamed-fadel-wd.github.io/libya-global-reports` (`LGR_BASE_PATH=/libya-global-reports`). Workflow: `apps/libya-global-reports/.github/workflows/pages.yml`. Production sets `LGR_SHOW_DEMO=false`.
 - Cloudflare Pages or Netlify: build `npm run build`, publish `dist/`, set `LGR_SITE_URL`. `netlify.toml` is in this folder.
 
 Confirm the host’s build minutes, bandwidth and Actions limits before calling it free. The existing Vercel project for the TEDx archive is a different app; do not attach this board to it without checking hobby-plan limits.
 
 `public/_headers` is honoured by Cloudflare Pages and Netlify. GitHub Pages does not apply `_headers` automatically.
 
-Set `LGR_SITE_URL` (and `LGR_BASE_PATH` if the site is not at the domain root) before publishing canonical URLs and RSS links. Keep `LGR_SHOW_DEMO=true` until the demo-off gate.
+Set `LGR_SITE_URL` (and `LGR_BASE_PATH` if the site is not at the domain root) before publishing canonical URLs and RSS links. Production keeps `LGR_SHOW_DEMO=false`.
 
 ## Expected costs
 

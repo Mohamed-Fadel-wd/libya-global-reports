@@ -8,7 +8,7 @@ Year-1 host should stay on a **free static tier**. Confirm the host’s build mi
 
 1. Set `LGR_SITE_URL` to the public **HTTPS** origin (no trailing slash).
 2. If the site is not at the domain root (GitHub project Pages), set `LGR_BASE_PATH` to that prefix (example: `/libyan-data-bank`). Root deploys use `/`.
-3. Leave `LGR_SHOW_DEMO=true` until the demo-off gate in `docs/editorial-cadence.md` passes.
+3. Production uses `LGR_SHOW_DEMO=false` (SAMPLE off as of 14 September 2026). Set `true` only to inspect sample files locally. `npm run validate` still refuses a non-demo build if fewer than five real articles exist.
 4. `npm test && npm run validate && npm run build`.
 
 `public/_headers` is honoured by Cloudflare Pages and Netlify. GitHub Pages does not apply `_headers` automatically.
@@ -29,7 +29,7 @@ Create a project whose root is `apps/libya-global-reports` (or set the app direc
 
 - Build command: `npm run build`
 - Publish directory: `dist`
-- Environment: `LGR_SITE_URL=https://<your-pages-host>`, `LGR_BASE_PATH=/`, `LGR_SHOW_DEMO=true` until the gate.
+- Environment: `LGR_SITE_URL=https://<your-pages-host>`, `LGR_BASE_PATH=/`, `LGR_SHOW_DEMO=false`.
 
 `netlify.toml` in this app folder matches that layout.
 

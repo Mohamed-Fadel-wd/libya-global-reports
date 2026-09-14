@@ -1,6 +1,7 @@
 # Named professional readers (private list)
 
-Keep filled copies under `editorial/private/` (gitignored). Do not publish names on the site.
+Keep filled copies under `editorial/private/` (gitignored). Do not publish names on the site. A blank private copy may exist locally after Phase B start; it is not in git.
+
 
 | Date noted | Sector (oil-gas / un-humanitarian / telecom / logistics) | Role (reader, not a named organisation unless they consented) | How they use the board | Notes |
 | --- | --- | --- | --- | --- |
