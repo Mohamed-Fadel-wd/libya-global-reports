@@ -23,7 +23,6 @@ jobs:
     env:
       LGR_SITE_URL: https://mohamed-fadel-wd.github.io/libya-global-reports
       LGR_BASE_PATH: /libya-global-reports
-      LGR_SHOW_DEMO: "false"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -34,6 +33,8 @@ jobs:
       - run: npm test
       - run: npm run validate
       - run: npm run build
+        env:
+          LGR_SHOW_DEMO: "false"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

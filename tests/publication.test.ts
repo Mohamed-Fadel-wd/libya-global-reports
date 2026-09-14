@@ -84,19 +84,26 @@ describe("publication filters", () => {
   });
 
   it("keeps demo articles out of the public RSS feed even when they are published", () => {
-    const demo = article({ id: "demo", slug: "demo", demo: true, editorialStatus: "published" });
-    const approved = article({ id: "real", slug: "real", demo: false, editorialStatus: "published" });
-    expect(isRssEligible(demo)).toBe(false);
-    expect(rssArticles([demo, approved]).map((item) => item.id)).toEqual(["real"]);
-    const board = buildBoard({
-      settings,
-      sources,
-      articles: [demo, approved],
-      briefings: emptyBriefings,
-      outlooks: emptyOutlooks,
-      observations: emptyObs,
-    });
-    expect(board.rssItems.map((item) => item.id)).toEqual(["real"]);
-    expect(board.articles.map((item) => item.id).sort()).toEqual(["demo", "real"]);
+    const previous = process.env.LGR_SHOW_DEMO;
+    delete process.env.LGR_SHOW_DEMO;
+    try {
+      const demo = article({ id: "demo", slug: "demo", demo: true, editorialStatus: "published" });
+      const approved = article({ id: "real", slug: "real", demo: false, editorialStatus: "published" });
+      expect(isRssEligible(demo)).toBe(false);
+      expect(rssArticles([demo, approved]).map((item) => item.id)).toEqual(["real"]);
+      const board = buildBoard({
+        settings,
+        sources,
+        articles: [demo, approved],
+        briefings: emptyBriefings,
+        outlooks: emptyOutlooks,
+        observations: emptyObs,
+      });
+      expect(board.rssItems.map((item) => item.id)).toEqual(["real"]);
+      expect(board.articles.map((item) => item.id).sort()).toEqual(["demo", "real"]);
+    } finally {
+      if (previous === undefined) delete process.env.LGR_SHOW_DEMO;
+      else process.env.LGR_SHOW_DEMO = previous;
+    }
   });
 });
