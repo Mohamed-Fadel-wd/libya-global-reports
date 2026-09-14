@@ -19,7 +19,7 @@ Workflow: `.github/workflows/lgr-pages.yml`.
 
 1. Repository **Settings → Pages → Source: GitHub Actions**.
 2. Run **LGR pages** via `workflow_dispatch`. Push-to-`main` deploy stays commented until you confirm Pages and Actions limits.
-3. Expected project URL shape: `https://<owner>.github.io/<repo>` with `LGR_BASE_PATH=/<repo>`.
+3. Expected project URL for the **private monorepo** is blocked on GitHub Free (Pages needs a public repository). The public origin is the sibling repo **libya-global-reports**: `https://mohamed-fadel-wd.github.io/libya-global-reports` with `LGR_BASE_PATH=/libya-global-reports`.
 
 The workflow does not publish drafts. It only builds committed `content/`.
 

@@ -1,12 +1,12 @@
 # Phase A status — 14 September 2026
 
-Gate A target: public HTTPS origin + non-demo items in `/rss.xml`. SAMPLE labels stay on until an editor turns demo off (gate already has ≥5 real articles; **do not** flip `showDemoContent` in this step).
+Gate A target: public HTTPS origin + non-demo items in `/rss.xml`. SAMPLE labels stay on (`showDemoContent` remains true) even though ≥5 real articles exist.
 
 | Gate A item | Status |
 | --- | --- |
-| Deploy path for static `dist/` | Workflow `.github/workflows/lgr-pages.yml`. Expected origin: `https://mohamed-fadel-wd.github.io/libyan-data-bank`. Live check is recorded after Pages deploy. |
-| SAMPLE replaced with real coverage | **Partial.** Seven ReliefWeb-attributed articles, briefing `2026-09-14`, outlook `2026-w38` are `demo: false`. SAMPLE articles remain visible. Demo-off is **not** done. |
-| Editorial cadence | Publishing day 14 September 2026 recorded as `published`. |
-| Collection that is allowed to run | ReliefWeb RSS via `node:https`; drafts remain unpublished until review. |
+| Deploy path | Private monorepo Pages is blocked on GitHub Free. Public sibling `libya-global-reports` is the free host. Origin: `https://mohamed-fadel-wd.github.io/libya-global-reports`. |
+| SAMPLE vs real coverage | Seven ReliefWeb-attributed articles, briefing `2026-09-14`, outlook `2026-w38` are `demo: false`. SAMPLE articles remain visible. Demo-off is **not** done. |
+| Editorial cadence | 14 September 2026 recorded as `published`. |
+| Collection | ReliefWeb RSS via `node:https`; drafts stay unpublished until review. |
 
-**Gate A RSS half:** `/rss.xml` includes the seven approved non-demo articles after build. **Gate A URL half:** depends on GitHub Pages being enabled and the workflow succeeding.
+**Gate A RSS:** seven approved non-demo items after build. **Gate A URL:** the public Pages origin above, once the sibling repo workflow succeeds.

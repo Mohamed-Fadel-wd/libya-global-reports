@@ -102,7 +102,7 @@ The site does not require AI. `src/lib/ai.ts` is a disabled server-side interfac
 
 A public origin is **not live** until you enable a host. The deploy path is documented in [docs/deploy.md](docs/deploy.md).
 
-- GitHub Pages: `.github/workflows/lgr-pages.yml` (`workflow_dispatch`). Enable **Settings → Pages → GitHub Actions**, then run the workflow. Push-to-`main` stays commented until you confirm Actions limits. Intended origin: `https://mohamed-fadel-wd.github.io/libyan-data-bank` with `LGR_BASE_PATH=/libyan-data-bank`.
+- GitHub Pages: the **private** monorepo cannot use Pages on the current GitHub plan. A public sibling repo `libya-global-reports` is the free origin: `https://mohamed-fadel-wd.github.io/libya-global-reports` (`LGR_BASE_PATH=/libya-global-reports`). Workflow: `apps/libya-global-reports/.github/workflows/pages.yml`. Keep `LGR_SHOW_DEMO=true` until the demo-off gate.
 - Cloudflare Pages or Netlify: build `npm run build`, publish `dist/`, set `LGR_SITE_URL`. `netlify.toml` is in this folder.
 
 Confirm the host’s build minutes, bandwidth and Actions limits before calling it free. The existing Vercel project for the TEDx archive is a different app; do not attach this board to it without checking hobby-plan limits.
